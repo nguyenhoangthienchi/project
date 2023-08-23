@@ -1,22 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { Text, Image } from 'common-ui';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Image src="https://static.wikia.nocookie.net/a98a2d3a-5962-449b-92c3-f52090f06afe/scale-to-width/755" />
+        <br />
+        <Text>some texts here</Text>
       </header>
     </div>
   );
