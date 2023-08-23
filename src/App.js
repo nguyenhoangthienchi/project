@@ -6,7 +6,7 @@ function App() {
       <header className="App-header">
         <Image src="https://static.wikia.nocookie.net/a98a2d3a-5962-449b-92c3-f52090f06afe/scale-to-width/755" />
         <br />
-        <Text>some texts here sssss test</Text>
+        <Text>some texts here sssss test asdf</Text>
       </header>
     </div>
   );
