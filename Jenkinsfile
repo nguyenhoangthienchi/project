@@ -37,18 +37,18 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'export TIME=$(date +%s)'
-                sh 'aws elasticbeanstalk create-application-version --application-name cicd-app --version-label $TIME --source-bundle S3Bucket=my-aws-cicd-bucket,S3Key=docker-compose.zip'
-                sh 'eb deploy blue-app --version $TIME'
                 sh '''
-                response=$(curl -s -o /dev/null -w "%{http_code}" <URL>)
+                    export TIME=$(date +%s)'
+                    aws elasticbeanstalk create-application-version --application-name cicd-app --version-label $TIME --source-bundle S3Bucket=my-aws-cicd-bucket,S3Key=docker-compose.zip
+                    eb deploy blue-app --version $TIME
+                    response=$(curl -s -o /dev/null -w "%{http_code}" <URL>)
 
-                if [ "$response" -eq 200 ]; then
-                    echo "Request successful"
-                else
-                    echo "Request failed with status code $response"
-                    exit 1
-                fi
+                    if [ "$response" -eq 200 ]; then
+                        echo "Request successful"
+                    else
+                        echo "Request failed with status code $response"
+                        exit 1
+                    fi
                 '''
             }
         }
