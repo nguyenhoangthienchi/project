@@ -28,7 +28,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Run your tests
-                sh 'npm run build'
+                // sh 'npm run build'
                 sh 'aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/f4n9a5k6'
                 sh 'docker build -t cicd-app-chinht2 .'
                 sh 'docker tag cicd-app-chinht2:latest public.ecr.aws/f4n9a5k6/cicd-app-chinht2:latest'
