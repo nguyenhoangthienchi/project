@@ -40,7 +40,7 @@ pipeline {
                 sh '''
                     export TIME=$(date +%s)
                     aws elasticbeanstalk create-application-version --application-name cicd-app --version-label $TIME --source-bundle S3Bucket=my-aws-cicd-bucket,S3Key=docker-compose.zip
-                    eb deploy blue-app --version $TIME
+                    /var/lib/jenkins/.local/bin/eb deploy blue-app --version $TIME
                     response=$(curl -s -o /dev/null -w "%{http_code}" <URL>)
 
                     if [ "$response" -eq 200 ]; then
@@ -54,7 +54,7 @@ pipeline {
         }
         stage('Blue/Green swap') {
             steps {
-                sh 'eb swap blue-app'
+                sh '/var/lib/jenkins/.local/bin/eb swap blue-app'
             }
         }
     }
