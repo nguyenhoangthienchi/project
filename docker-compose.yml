@@ -1,0 +1,6 @@
+version: '2.4'
+services:
+  app:
+    image: public.ecr.aws/f4n9a5k6/cicd-app-chinht2:latest
+    ports:
+      - "80:3000"
