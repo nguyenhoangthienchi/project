@@ -35,7 +35,6 @@ pipeline {
                 sh 'docker push public.ecr.aws/f4n9a5k6/cicd-app-chinht2:latest'
             }
         }
-
         stage('Deploy') {
             steps {
                 sh 'export TIME=$(date +%s)'
