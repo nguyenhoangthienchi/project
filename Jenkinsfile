@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'echo $TIME'
+                sh 'export TIME=$(date +%s)'
                 sh 'aws elasticbeanstalk create-application-version --application-name cicd-app --version-label $TIME --source-bundle S3Bucket=my-aws-cicd-bucket,S3Key=docker-compose.zip'
                 sh 'eb deploy blue-app --version $TIME'
                 sh '''
